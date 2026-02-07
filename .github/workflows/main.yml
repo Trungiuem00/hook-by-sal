@@ -12,8 +12,11 @@ jobs:
 
       - name: Build Project
         # Nhớ kiểm tra lại tên file .sln của bạn có đúng là injector.sln không nhé
-        run: msbuild injector.sln /p:Configuration=Release /p:Platform=x64
-
+        - name: Build Project
+        # Chúng ta dùng lệnh cd để vào đúng thư mục chứa file .sln
+        run: |
+          cd "injector src"
+          msbuild injector.sln /p:Configuration=Release /p:Platform=x64
       - name: Upload Result
         uses: actions/upload-artifact@v4
         with:
