@@ -1,0 +1,458 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{47a6d2f3-4260-4dcd-8931-f11e12f19a44}</ProjectGuid>
+    <RootNamespace>Elemental Module</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(SolutionDir)builds\</OutDir>
+    <IntDir>$(SolutionDir)intermediates\</IntDir>
+    <TargetName>advapi</TargetName>
+    <IncludePath>$(projectdir);$(projectdir)libraries\;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IncludePath>$(ProjectDir);$(ProjectDir)libraries\minhook\;$(ProjectDir)libraries\;$(ProjectDir)other\;$(ProjectDir)libraries\opus\;$(ProjectDir)libraries\opus\include\;$(ProjectDir)libraries\opus\silk\;$(ProjectDir)libraries\opus\celt\;$(ProjectDir)libraries\opus\silk\float\;$(IncludePath)</IncludePath>
+    <OutDir>$(SolutionDir)Builds\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)Builds\$(Configuration)\Intermediates\</IntDir>
+    <TargetName>advapi</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;AFYSOURCE_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;AFYSOURCE_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>OPUS_BUILD;_DEBUG;AFYSOURCE_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>false</SDLCheck>
+      <PreprocessorDefinitions>HAVE_CONFIG_H;OPUS_BUILD;NDEBUG;AFYSOURCE_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <LanguageStandard_C>stdclatest</LanguageStandard_C>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+      <AdditionalDependencies>d3d9.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalOptions>/FORCE:MULTIPLE %(AdditionalOptions)</AdditionalOptions>
+      <ForceFileOutput>Enabled</ForceFileOutput>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="Libraries\MinHook\source\buffer.c" />
+    <ClCompile Include="Libraries\MinHook\source\hde32.c" />
+    <ClCompile Include="Libraries\MinHook\source\hde64.c" />
+    <ClCompile Include="Libraries\MinHook\source\minhook.c" />
+    <ClCompile Include="Libraries\MinHook\source\trampoline.c" />
+    <ClCompile Include="Libraries\Opus\celt\bands.c" />
+    <ClCompile Include="Libraries\Opus\celt\celt.c" />
+    <ClCompile Include="Libraries\Opus\celt\celt_decoder.c" />
+    <ClCompile Include="Libraries\Opus\celt\celt_encoder.c" />
+    <ClCompile Include="Libraries\Opus\celt\celt_lpc.c" />
+    <ClCompile Include="Libraries\Opus\celt\cwrs.c" />
+    <ClCompile Include="Libraries\Opus\celt\entcode.c" />
+    <ClCompile Include="Libraries\Opus\celt\entdec.c" />
+    <ClCompile Include="Libraries\Opus\celt\entenc.c" />
+    <ClCompile Include="Libraries\Opus\celt\kiss_fft.c" />
+    <ClCompile Include="Libraries\Opus\celt\laplace.c" />
+    <ClCompile Include="Libraries\Opus\celt\mathops.c" />
+    <ClCompile Include="Libraries\Opus\celt\mdct.c" />
+    <ClCompile Include="Libraries\Opus\celt\modes.c" />
+    <ClCompile Include="Libraries\Opus\celt\pitch.c" />
+    <ClCompile Include="Libraries\Opus\celt\quant_bands.c" />
+    <ClCompile Include="Libraries\Opus\celt\rate.c" />
+    <ClCompile Include="Libraries\Opus\celt\vq.c" />
+    <ClCompile Include="Libraries\Opus\celt\x86\celt_lpc_sse4_1.c" />
+    <ClCompile Include="Libraries\Opus\celt\x86\pitch_sse.c" />
+    <ClCompile Include="Libraries\Opus\celt\x86\pitch_sse2.c" />
+    <ClCompile Include="Libraries\Opus\celt\x86\pitch_sse4_1.c" />
+    <ClCompile Include="Libraries\Opus\celt\x86\vq_sse2.c" />
+    <ClCompile Include="Libraries\Opus\celt\x86\x86cpu.c" />
+    <ClCompile Include="Libraries\Opus\celt\x86\x86_celt_map.c" />
+    <ClCompile Include="Libraries\Opus\silk\A2NLSF.c" />
+    <ClCompile Include="Libraries\Opus\silk\ana_filt_bank_1.c" />
+    <ClCompile Include="Libraries\Opus\silk\biquad_alt.c" />
+    <ClCompile Include="Libraries\Opus\silk\bwexpander.c" />
+    <ClCompile Include="Libraries\Opus\silk\bwexpander_32.c" />
+    <ClCompile Include="Libraries\Opus\silk\check_control_input.c" />
+    <ClCompile Include="Libraries\Opus\silk\CNG.c" />
+    <ClCompile Include="Libraries\Opus\silk\code_signs.c" />
+    <ClCompile Include="Libraries\Opus\silk\control_audio_bandwidth.c" />
+    <ClCompile Include="Libraries\Opus\silk\control_codec.c" />
+    <ClCompile Include="Libraries\Opus\silk\control_SNR.c" />
+    <ClCompile Include="Libraries\Opus\silk\debug.c" />
+    <ClCompile Include="Libraries\Opus\silk\decoder_set_fs.c" />
+    <ClCompile Include="Libraries\Opus\silk\decode_core.c" />
+    <ClCompile Include="Libraries\Opus\silk\decode_frame.c" />
+    <ClCompile Include="Libraries\Opus\silk\decode_indices.c" />
+    <ClCompile Include="Libraries\Opus\silk\decode_parameters.c" />
+    <ClCompile Include="Libraries\Opus\silk\decode_pitch.c" />
+    <ClCompile Include="Libraries\Opus\silk\decode_pulses.c" />
+    <ClCompile Include="Libraries\Opus\silk\dec_API.c" />
+    <ClCompile Include="Libraries\Opus\silk\encode_indices.c" />
+    <ClCompile Include="Libraries\Opus\silk\encode_pulses.c" />
+    <ClCompile Include="Libraries\Opus\silk\enc_API.c" />
+    <ClCompile Include="Libraries\Opus\silk\fixed\apply_sine_window_FIX.c" />
+    <ClCompile Include="Libraries\Opus\silk\fixed\autocorr_FIX.c" />
+    <ClCompile Include="Libraries\Opus\silk\fixed\corrMatrix_FIX.c" />
+    <ClCompile Include="Libraries\Opus\silk\fixed\find_LTP_FIX.c" />
+    <ClCompile Include="Libraries\Opus\silk\fixed\k2a_FIX.c" />
+    <ClCompile Include="Libraries\Opus\silk\fixed\k2a_Q16_FIX.c" />
+    <ClCompile Include="Libraries\Opus\silk\fixed\LTP_analysis_filter_FIX.c" />
+    <ClCompile Include="Libraries\Opus\silk\fixed\LTP_scale_ctrl_FIX.c" />
+    <ClCompile Include="Libraries\Opus\silk\fixed\noise_shape_analysis_FIX.c" />
+    <ClCompile Include="Libraries\Opus\silk\fixed\process_gains_FIX.c" />
+    <ClCompile Include="Libraries\Opus\silk\fixed\regularize_correlations_FIX.c" />
+    <ClCompile Include="Libraries\Opus\silk\fixed\residual_energy16_FIX.c" />
+    <ClCompile Include="Libraries\Opus\silk\fixed\residual_energy_FIX.c" />
+    <ClCompile Include="Libraries\Opus\silk\fixed\schur64_FIX.c" />
+    <ClCompile Include="Libraries\Opus\silk\fixed\schur_FIX.c" />
+    <ClCompile Include="Libraries\Opus\silk\fixed\vector_ops_FIX.c" />
+    <ClCompile Include="Libraries\Opus\silk\fixed\warped_autocorrelation_FIX.c" />
+    <ClCompile Include="Libraries\Opus\silk\fixed\x86\vector_ops_FIX_sse4_1.c" />
+    <ClCompile Include="Libraries\Opus\silk\float\apply_sine_window_FLP.c" />
+    <ClCompile Include="Libraries\Opus\silk\float\autocorrelation_FLP.c" />
+    <ClCompile Include="Libraries\Opus\silk\float\burg_modified_FLP.c" />
+    <ClCompile Include="Libraries\Opus\silk\float\bwexpander_FLP.c" />
+    <ClCompile Include="Libraries\Opus\silk\float\corrMatrix_FLP.c" />
+    <ClCompile Include="Libraries\Opus\silk\float\encode_frame_FLP.c" />
+    <ClCompile Include="Libraries\Opus\silk\float\energy_FLP.c" />
+    <ClCompile Include="Libraries\Opus\silk\float\find_LPC_FLP.c" />
+    <ClCompile Include="Libraries\Opus\silk\float\find_LTP_FLP.c" />
+    <ClCompile Include="Libraries\Opus\silk\float\find_pitch_lags_FLP.c" />
+    <ClCompile Include="Libraries\Opus\silk\float\find_pred_coefs_FLP.c" />
+    <ClCompile Include="Libraries\Opus\silk\float\inner_product_FLP.c" />
+    <ClCompile Include="Libraries\Opus\silk\float\k2a_FLP.c" />
+    <ClCompile Include="Libraries\Opus\silk\float\LPC_analysis_filter_FLP.c" />
+    <ClCompile Include="Libraries\Opus\silk\float\LPC_inv_pred_gain_FLP.c" />
+    <ClCompile Include="Libraries\Opus\silk\float\LTP_analysis_filter_FLP.c" />
+    <ClCompile Include="Libraries\Opus\silk\float\LTP_scale_ctrl_FLP.c" />
+    <ClCompile Include="Libraries\Opus\silk\float\noise_shape_analysis_FLP.c" />
+    <ClCompile Include="Libraries\Opus\silk\float\pitch_analysis_core_FLP.c" />
+    <ClCompile Include="Libraries\Opus\silk\float\process_gains_FLP.c" />
+    <ClCompile Include="Libraries\Opus\silk\float\regularize_correlations_FLP.c" />
+    <ClCompile Include="Libraries\Opus\silk\float\residual_energy_FLP.c" />
+    <ClCompile Include="Libraries\Opus\silk\float\scale_copy_vector_FLP.c" />
+    <ClCompile Include="Libraries\Opus\silk\float\scale_vector_FLP.c" />
+    <ClCompile Include="Libraries\Opus\silk\float\schur_FLP.c" />
+    <ClCompile Include="Libraries\Opus\silk\float\sort_FLP.c" />
+    <ClCompile Include="Libraries\Opus\silk\float\warped_autocorrelation_FLP.c" />
+    <ClCompile Include="Libraries\Opus\silk\float\wrappers_FLP.c" />
+    <ClCompile Include="Libraries\Opus\silk\gain_quant.c" />
+    <ClCompile Include="Libraries\Opus\silk\HP_variable_cutoff.c" />
+    <ClCompile Include="Libraries\Opus\silk\init_decoder.c" />
+    <ClCompile Include="Libraries\Opus\silk\init_encoder.c" />
+    <ClCompile Include="Libraries\Opus\silk\inner_prod_aligned.c" />
+    <ClCompile Include="Libraries\Opus\silk\interpolate.c" />
+    <ClCompile Include="Libraries\Opus\silk\lin2log.c" />
+    <ClCompile Include="Libraries\Opus\silk\log2lin.c" />
+    <ClCompile Include="Libraries\Opus\silk\LPC_analysis_filter.c" />
+    <ClCompile Include="Libraries\Opus\silk\LPC_fit.c" />
+    <ClCompile Include="Libraries\Opus\silk\LPC_inv_pred_gain.c" />
+    <ClCompile Include="Libraries\Opus\silk\LP_variable_cutoff.c" />
+    <ClCompile Include="Libraries\Opus\silk\NLSF2A.c" />
+    <ClCompile Include="Libraries\Opus\silk\NLSF_decode.c" />
+    <ClCompile Include="Libraries\Opus\silk\NLSF_del_dec_quant.c" />
+    <ClCompile Include="Libraries\Opus\silk\NLSF_encode.c" />
+    <ClCompile Include="Libraries\Opus\silk\NLSF_stabilize.c" />
+    <ClCompile Include="Libraries\Opus\silk\NLSF_unpack.c" />
+    <ClCompile Include="Libraries\Opus\silk\NLSF_VQ.c" />
+    <ClCompile Include="Libraries\Opus\silk\NLSF_VQ_weights_laroia.c" />
+    <ClCompile Include="Libraries\Opus\silk\NSQ.c" />
+    <ClCompile Include="Libraries\Opus\silk\NSQ_del_dec.c" />
+    <ClCompile Include="Libraries\Opus\silk\pitch_est_tables.c" />
+    <ClCompile Include="Libraries\Opus\silk\PLC.c" />
+    <ClCompile Include="Libraries\Opus\silk\process_NLSFs.c" />
+    <ClCompile Include="Libraries\Opus\silk\quant_LTP_gains.c" />
+    <ClCompile Include="Libraries\Opus\silk\resampler.c" />
+    <ClCompile Include="Libraries\Opus\silk\resampler_down2.c" />
+    <ClCompile Include="Libraries\Opus\silk\resampler_down2_3.c" />
+    <ClCompile Include="Libraries\Opus\silk\resampler_private_AR2.c" />
+    <ClCompile Include="Libraries\Opus\silk\resampler_private_down_FIR.c" />
+    <ClCompile Include="Libraries\Opus\silk\resampler_private_IIR_FIR.c" />
+    <ClCompile Include="Libraries\Opus\silk\resampler_private_up2_HQ.c" />
+    <ClCompile Include="Libraries\Opus\silk\resampler_rom.c" />
+    <ClCompile Include="Libraries\Opus\silk\shell_coder.c" />
+    <ClCompile Include="Libraries\Opus\silk\sigm_Q15.c" />
+    <ClCompile Include="Libraries\Opus\silk\sort.c" />
+    <ClCompile Include="Libraries\Opus\silk\stereo_decode_pred.c" />
+    <ClCompile Include="Libraries\Opus\silk\stereo_encode_pred.c" />
+    <ClCompile Include="Libraries\Opus\silk\stereo_find_predictor.c" />
+    <ClCompile Include="Libraries\Opus\silk\stereo_LR_to_MS.c" />
+    <ClCompile Include="Libraries\Opus\silk\stereo_MS_to_LR.c" />
+    <ClCompile Include="Libraries\Opus\silk\stereo_quant_pred.c" />
+    <ClCompile Include="Libraries\Opus\silk\sum_sqr_shift.c" />
+    <ClCompile Include="Libraries\Opus\silk\tables_gain.c" />
+    <ClCompile Include="Libraries\Opus\silk\tables_LTP.c" />
+    <ClCompile Include="Libraries\Opus\silk\tables_NLSF_CB_NB_MB.c" />
+    <ClCompile Include="Libraries\Opus\silk\tables_NLSF_CB_WB.c" />
+    <ClCompile Include="Libraries\Opus\silk\tables_other.c" />
+    <ClCompile Include="Libraries\Opus\silk\tables_pitch_lag.c" />
+    <ClCompile Include="Libraries\Opus\silk\tables_pulses_per_block.c" />
+    <ClCompile Include="Libraries\Opus\silk\table_LSF_cos.c" />
+    <ClCompile Include="Libraries\Opus\silk\VAD.c" />
+    <ClCompile Include="Libraries\Opus\silk\VQ_WMat_EC.c" />
+    <ClCompile Include="Libraries\Opus\silk\x86\NSQ_del_dec_sse4_1.c" />
+    <ClCompile Include="Libraries\Opus\silk\x86\NSQ_sse4_1.c" />
+    <ClCompile Include="Libraries\Opus\silk\x86\VAD_sse4_1.c" />
+    <ClCompile Include="Libraries\Opus\silk\x86\VQ_WMat_EC_sse4_1.c" />
+    <ClCompile Include="Libraries\Opus\silk\x86\x86_silk_map.c" />
+    <ClCompile Include="Libraries\Opus\src\analysis.c" />
+    <ClCompile Include="Libraries\Opus\src\mapping_matrix.c" />
+    <ClCompile Include="Libraries\Opus\src\mlp.c" />
+    <ClCompile Include="Libraries\Opus\src\mlp_data.c" />
+    <ClCompile Include="Libraries\Opus\src\opus.c" />
+    <ClCompile Include="Libraries\Opus\src\opus_decoder.c" />
+    <ClCompile Include="Libraries\Opus\src\opus_encoder.c" />
+    <ClCompile Include="Libraries\Opus\src\opus_multistream.c" />
+    <ClCompile Include="Libraries\Opus\src\opus_multistream_decoder.c" />
+    <ClCompile Include="Libraries\Opus\src\opus_multistream_encoder.c" />
+    <ClCompile Include="Libraries\Opus\src\opus_projection_decoder.c" />
+    <ClCompile Include="Libraries\Opus\src\opus_projection_encoder.c" />
+    <ClCompile Include="Libraries\Opus\src\processing.c" />
+    <ClCompile Include="Libraries\Opus\src\repacketizer.c" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Other\Configurations\Globals.cpp" />
+    <ClCompile Include="Other\Detours\Decode.cpp" />
+    <ClCompile Include="Libraries\ImGui\imgui.cpp" />
+    <ClCompile Include="Libraries\ImGui\imgui_demo.cpp" />
+    <ClCompile Include="Libraries\ImGui\imgui_draw.cpp" />
+    <ClCompile Include="Libraries\ImGui\imgui_impl_dx9.cpp" />
+    <ClCompile Include="Libraries\ImGui\imgui_impl_win32.cpp" />
+    <ClCompile Include="Libraries\ImGui\imgui_tables.cpp" />
+    <ClCompile Include="Libraries\ImGui\imgui_widgets.cpp" />
+    <ClCompile Include="Other\Interface\Overlay.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Encryption\skCrypt.h" />
+    <ClInclude Include="Libraries\MinHook\include\buffer.h" />
+    <ClInclude Include="Libraries\MinHook\include\hde32.h" />
+    <ClInclude Include="Libraries\MinHook\include\hde64.h" />
+    <ClInclude Include="Libraries\MinHook\include\minhook.h" />
+    <ClInclude Include="Libraries\MinHook\include\pstdint.h" />
+    <ClInclude Include="Libraries\MinHook\include\table32.h" />
+    <ClInclude Include="Libraries\MinHook\include\table64.h" />
+    <ClInclude Include="Libraries\MinHook\include\trampoline.h" />
+    <ClInclude Include="Libraries\Opus\celt\arch.h" />
+    <ClInclude Include="Libraries\Opus\celt\bands.h" />
+    <ClInclude Include="Libraries\Opus\celt\celt.h" />
+    <ClInclude Include="Libraries\Opus\celt\celt_lpc.h" />
+    <ClInclude Include="Libraries\Opus\celt\cpu_support.h" />
+    <ClInclude Include="Libraries\Opus\celt\cwrs.h" />
+    <ClInclude Include="Libraries\Opus\celt\ecintrin.h" />
+    <ClInclude Include="Libraries\Opus\celt\entcode.h" />
+    <ClInclude Include="Libraries\Opus\celt\entdec.h" />
+    <ClInclude Include="Libraries\Opus\celt\entenc.h" />
+    <ClInclude Include="Libraries\Opus\celt\fixed_debug.h" />
+    <ClInclude Include="Libraries\Opus\celt\fixed_generic.h" />
+    <ClInclude Include="Libraries\Opus\celt\float_cast.h" />
+    <ClInclude Include="Libraries\Opus\celt\kiss_fft.h" />
+    <ClInclude Include="Libraries\Opus\celt\laplace.h" />
+    <ClInclude Include="Libraries\Opus\celt\mathops.h" />
+    <ClInclude Include="Libraries\Opus\celt\mdct.h" />
+    <ClInclude Include="Libraries\Opus\celt\mfrngcod.h" />
+    <ClInclude Include="Libraries\Opus\celt\mips\celt_mipsr1.h" />
+    <ClInclude Include="Libraries\Opus\celt\mips\fixed_generic_mipsr1.h" />
+    <ClInclude Include="Libraries\Opus\celt\mips\kiss_fft_mipsr1.h" />
+    <ClInclude Include="Libraries\Opus\celt\mips\mdct_mipsr1.h" />
+    <ClInclude Include="Libraries\Opus\celt\mips\pitch_mipsr1.h" />
+    <ClInclude Include="Libraries\Opus\celt\mips\vq_mipsr1.h" />
+    <ClInclude Include="Libraries\Opus\celt\modes.h" />
+    <ClInclude Include="Libraries\Opus\celt\os_support.h" />
+    <ClInclude Include="Libraries\Opus\celt\pitch.h" />
+    <ClInclude Include="Libraries\Opus\celt\quant_bands.h" />
+    <ClInclude Include="Libraries\Opus\celt\rate.h" />
+    <ClInclude Include="Libraries\Opus\celt\stack_alloc.h" />
+    <ClInclude Include="Libraries\Opus\celt\static_modes_fixed.h" />
+    <ClInclude Include="Libraries\Opus\celt\static_modes_fixed_arm_ne10.h" />
+    <ClInclude Include="Libraries\Opus\celt\static_modes_float.h" />
+    <ClInclude Include="Libraries\Opus\celt\static_modes_float_arm_ne10.h" />
+    <ClInclude Include="Libraries\Opus\celt\vq.h" />
+    <ClInclude Include="Libraries\Opus\celt\x86\celt_lpc_sse.h" />
+    <ClInclude Include="Libraries\Opus\celt\x86\pitch_sse.h" />
+    <ClInclude Include="Libraries\Opus\celt\x86\vq_sse.h" />
+    <ClInclude Include="Libraries\Opus\celt\x86\x86cpu.h" />
+    <ClInclude Include="Libraries\Opus\celt\_kiss_fft_guts.h" />
+    <ClInclude Include="Libraries\Opus\config.h" />
+    <ClInclude Include="Libraries\Opus\include\opus.h" />
+    <ClInclude Include="Libraries\Opus\include\opus_custom.h" />
+    <ClInclude Include="Libraries\Opus\include\opus_defines.h" />
+    <ClInclude Include="Libraries\Opus\include\opus_multistream.h" />
+    <ClInclude Include="Libraries\Opus\include\opus_projection.h" />
+    <ClInclude Include="Libraries\Opus\include\opus_types.h" />
+    <ClInclude Include="Libraries\Opus\silk\API.h" />
+    <ClInclude Include="Libraries\Opus\silk\control.h" />
+    <ClInclude Include="Libraries\Opus\silk\debug.h" />
+    <ClInclude Include="Libraries\Opus\silk\define.h" />
+    <ClInclude Include="Libraries\Opus\silk\errors.h" />
+    <ClInclude Include="Libraries\Opus\silk\fixed\main_FIX.h" />
+    <ClInclude Include="Libraries\Opus\silk\fixed\mips\noise_shape_analysis_FIX_mipsr1.h" />
+    <ClInclude Include="Libraries\Opus\silk\fixed\mips\warped_autocorrelation_FIX_mipsr1.h" />
+    <ClInclude Include="Libraries\Opus\silk\fixed\structs_FIX.h" />
+    <ClInclude Include="Libraries\Opus\silk\float\main_FLP.h" />
+    <ClInclude Include="Libraries\Opus\silk\float\SigProc_FLP.h" />
+    <ClInclude Include="Libraries\Opus\silk\float\structs_FLP.h" />
+    <ClInclude Include="Libraries\Opus\silk\Inlines.h" />
+    <ClInclude Include="Libraries\Opus\silk\MacroCount.h" />
+    <ClInclude Include="Libraries\Opus\silk\MacroDebug.h" />
+    <ClInclude Include="Libraries\Opus\silk\macros.h" />
+    <ClInclude Include="Libraries\Opus\silk\main.h" />
+    <ClInclude Include="Libraries\Opus\silk\mips\macros_mipsr1.h" />
+    <ClInclude Include="Libraries\Opus\silk\mips\NSQ_del_dec_mipsr1.h" />
+    <ClInclude Include="Libraries\Opus\silk\mips\sigproc_fix_mipsr1.h" />
+    <ClInclude Include="Libraries\Opus\silk\NSQ.h" />
+    <ClInclude Include="Libraries\Opus\silk\pitch_est_defines.h" />
+    <ClInclude Include="Libraries\Opus\silk\PLC.h" />
+    <ClInclude Include="Libraries\Opus\silk\resampler_private.h" />
+    <ClInclude Include="Libraries\Opus\silk\resampler_rom.h" />
+    <ClInclude Include="Libraries\Opus\silk\resampler_structs.h" />
+    <ClInclude Include="Libraries\Opus\silk\SigProc_FIX.h" />
+    <ClInclude Include="Libraries\Opus\silk\structs.h" />
+    <ClInclude Include="Libraries\Opus\silk\tables.h" />
+    <ClInclude Include="Libraries\Opus\silk\tuning_parameters.h" />
+    <ClInclude Include="Libraries\Opus\silk\typedef.h" />
+    <ClInclude Include="Libraries\Opus\silk\x86\main_sse.h" />
+    <ClInclude Include="Libraries\Opus\silk\x86\SigProc_FIX_sse.h" />
+    <ClInclude Include="Libraries\Opus\src\analysis.h" />
+    <ClInclude Include="Libraries\Opus\src\mapping_matrix.h" />
+    <ClInclude Include="Libraries\Opus\src\mlp.h" />
+    <ClInclude Include="Libraries\Opus\src\opus_private.h" />
+    <ClInclude Include="Libraries\Opus\src\processing.h" />
+    <ClInclude Include="Libraries\Opus\src\tansig_table.h" />
+    <ClInclude Include="Other\Configurations\Globals.h" />
+    <ClInclude Include="Other\Detours\Decode.h" />
+    <ClInclude Include="Libraries\ImGui\imconfig.h" />
+    <ClInclude Include="Libraries\ImGui\imgui.h" />
+    <ClInclude Include="Libraries\ImGui\imgui_impl_dx9.h" />
+    <ClInclude Include="Libraries\ImGui\imgui_impl_win32.h" />
+    <ClInclude Include="Libraries\ImGui\imgui_internal.h" />
+    <ClInclude Include="Libraries\ImGui\imstb_rectpack.h" />
+    <ClInclude Include="Libraries\ImGui\imstb_textedit.h" />
+    <ClInclude Include="Libraries\ImGui\imstb_truetype.h" />
+    <ClInclude Include="Other\Interface\Overlay.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
