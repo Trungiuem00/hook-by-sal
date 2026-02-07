@@ -10,14 +10,7 @@ jobs:
       - name: Add MSBuild to PATH
         uses: microsoft/setup-msbuild@v1.1
 
-      - name: Restore NuGet Packages
-        # Một số project cần bước này để tải thư viện thiếu
-        run: |
-          cd "injector src"
-          nuget restore injector.sln
-
       - name: Build Full Solution
-        # Lệnh này sẽ build toàn bộ các dự án có trong file .sln (cả Hook và Injector)
         run: |
           cd "injector src"
           msbuild injector.sln /p:Configuration=Release /p:Platform=x64
@@ -26,7 +19,9 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: SalBel_Full_Bundle
-          # GitHub sẽ tự quét trong toàn bộ thư mục Release để lấy cả .exe và .dll
+          # Dùng đường dẫn này để GitHub tự tìm mọi file .exe và .dll vừa tạo ra
           path: |
-            **/x64/Release/*.dll
-            **/x64/Release/*.exe
+            **/*.exe
+            **/*.dll
+          # Dòng này giúp bỏ qua các file rác của hệ thống
+          if-no-files-found: error
