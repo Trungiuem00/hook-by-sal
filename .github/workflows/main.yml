@@ -1,23 +1,23 @@
 name: Build Sal Bel 90dB
-on: [push] # Tự động build mỗi khi bạn upload file mới lên
+on: [push]
 
 jobs:
   build:
-    runs-on: windows-latest # Chạy trên máy chủ Windows của GitHub
+    runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v3 # Lấy code từ repo của bạn
+      - uses: actions/checkout@v4
 
       - name: Add MSBuild to PATH
-        uses: microsoft/setup-msbuild@v1.1 # Cài đặt trình biên dịch Visual Studio
+        uses: microsoft/setup-msbuild@v1.1
 
       - name: Build Project
-        # LƯU Ý: Đổi 'injector.sln' thành đúng tên file .sln bạn đã upload
+        # Nhớ kiểm tra lại tên file .sln của bạn có đúng là injector.sln không nhé
         run: msbuild injector.sln /p:Configuration=Release /p:Platform=x64
 
       - name: Upload Result
-        uses: actions/upload-artifact@v3 # Gom file thành phẩm để bạn tải về
+        uses: actions/upload-artifact@v4
         with:
-          name: SalBel_Final_Product
+          name: SalBel_90dB_Final
           path: |
             x64/Release/*.dll
             x64/Release/*.exe
