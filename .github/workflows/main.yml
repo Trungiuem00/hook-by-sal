@@ -1,4 +1,4 @@
-name: Build Sal Bel 90dB
+name: Build Sal Bel Full Set
 on: [push]
 
 jobs:
@@ -10,17 +10,23 @@ jobs:
       - name: Add MSBuild to PATH
         uses: microsoft/setup-msbuild@v1.1
 
-      - name: Build Project
-        # Nhớ kiểm tra lại tên file .sln của bạn có đúng là injector.sln không nhé
-        - name: Build Project
-        # Chúng ta dùng lệnh cd để vào đúng thư mục chứa file .sln
+      - name: Restore NuGet Packages
+        # Một số project cần bước này để tải thư viện thiếu
+        run: |
+          cd "injector src"
+          nuget restore injector.sln
+
+      - name: Build Full Solution
+        # Lệnh này sẽ build toàn bộ các dự án có trong file .sln (cả Hook và Injector)
         run: |
           cd "injector src"
           msbuild injector.sln /p:Configuration=Release /p:Platform=x64
-      - name: Upload Result
+
+      - name: Upload All Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: SalBel_90dB_Final
+          name: SalBel_Full_Bundle
+          # GitHub sẽ tự quét trong toàn bộ thư mục Release để lấy cả .exe và .dll
           path: |
-            x64/Release/*.dll
-            x64/Release/*.exe
+            **/x64/Release/*.dll
+            **/x64/Release/*.exe
